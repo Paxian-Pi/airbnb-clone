@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-function Footer() {
+const Footer = () => {
 
     const [isOpen, setBottomSheetState] = useState(false)
     

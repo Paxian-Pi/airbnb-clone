@@ -1,9 +1,7 @@
 import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import logo from '../assets/airbnb-logo.png'
 import noImage from '../assets/no-image.png'
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { setSelectedFilter } from '../app/appSlice'
 
 
