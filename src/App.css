@@ -41,7 +41,7 @@
 
 .horizontal-line {
   border-radius: 10px;
-  width: auto;
+  /* width: auto; */
   height: 1px;
   background-color: #b4b4b4;
   transition: transform 530ms ease-in-out;
@@ -52,4 +52,21 @@
   background-color: #FFFFFF;
   position: sticky;
   top: 95px;
+}
+
+.footer {
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.showMapButton {
+  z-index: 1;
+  position: fixed;
+  left: 43%;
+  bottom: 10%;
 }

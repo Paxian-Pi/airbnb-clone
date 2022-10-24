@@ -1,16 +1,34 @@
 import React, { useState } from 'react'
-import { BottomSheet } from 'react-spring-bottom-sheet'
 
 
 function Footer() {
-    const [open, setOpen] = useState(false)
+
+    const [isOpen, setBottomSheetState] = useState(false)
+    
+    const onClickHandler = () => {
+        setBottomSheetState(!isOpen)
+    }
 
     return (
-        <footer className="bg-light text-dark p-4 text-center">
-            <button onClick={() => setOpen(true)}>Open</button>
-            <BottomSheet open={true}>My awesome content here</BottomSheet>
-            Copyright &copy; {new Date().getFullYear()} AirBnB Clone
+        <footer className="footer bg-white text-dark text-center">
+            <div className='mb-3 horizontal-line' />
+            <div className='row'>
+                <div className='text-left ml-5 mr-auto mb-4' style={{ height: '10px', cursor: 'pointer' }}>
+                    &copy; {new Date().getFullYear()} Airbnb, Inc. · Privacy · Terms · Sitemap · Destinations
+                </div>
+
+                <div className='text-right mr-5 mb-4' style={{ height: '10px', cursor: 'pointer' }}>
+                    <span><i className="fs-4 bi-globe text-dark"></i></span>
+                    <span className='ml-3'>English (US)</span>
+                    <span className='ml-3'>$ USD</span>
+                    <span className='ml-3'>Support & resources</span>
+                    <span onClick={onClickHandler}>
+                        {isOpen ? <i className="ml-3 bi bi-chevron-up"></i> : <i className="ml-3 bi bi-chevron-down"></i>}
+                    </span>
+                </div>
+            </div>
         </footer>
+
     )
 }
 

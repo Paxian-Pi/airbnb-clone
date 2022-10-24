@@ -14,37 +14,55 @@ const Main = () => {
     const [selectedFilter, setSelectedFilter] = useState('')
 
     console.log(selectedFilter)
-    
+
     return (
         <div>
             <div className='mr-auto ml-auto mb-3 horizontal-line' />
 
             <div className='container-fluid'>
                 <div className='sticky-style container-fluid mb-3'>
-                    <Splide
-                        options={{
-                            perPage: 10,
-                            pagination: false
-                        }}
-                    >
-                        {filters.map((filter) => {
-                            return (
-                                <SplideSlide
-                                    key={filter.id}
-                                    className={windowDimension.winWidth <= 1366 ? 'ml-3 mr-3' : 'ml-auto mr-auto'}
-                                >
-                                    <div
-                                        style={{ cursor: 'pointer' }}
-                                        onClick={() => setSelectedFilter(filter.title)}
-                                    >
-                                        <img src={filter.image} alt={filter.title} style={{ width: '30px' }} />
-                                        <div><small>{filter.title}</small></div>
-                                        {selectedFilter == filter.title && <div className='mr-auto ml-auto mb-2 indicator-selected' />}
-                                    </div>
-                                </SplideSlide>
-                            )
-                        })}
-                    </Splide>
+                    <div className='row'>
+                        <div className='col-md-11'>
+                            <Splide
+                                options={{
+                                    perPage: 10,
+                                    pagination: false
+                                }}
+                            >
+                                {filters.map((filter) => {
+                                    return (
+                                        <SplideSlide
+                                            key={filter.id}
+                                            className={windowDimension.winWidth <= 1366 ? 'ml-4 mr-4' : 'ml-auto mr-auto'}
+                                        >
+                                            <div
+                                                style={{ cursor: 'pointer' }}
+                                                onClick={() => setSelectedFilter(filter.title)}
+                                            >
+                                                <img src={filter.image} alt={filter.title} style={{ width: '30px' }} />
+                                                <div><small>{filter.title}</small></div>
+                                                {selectedFilter == filter.title && <div className='mr-auto ml-auto mb-2 indicator-selected' />}
+                                            </div>
+                                        </SplideSlide>
+                                    )
+                                })}
+                            </Splide>
+                        </div>
+
+                        <div className="col-md-1 form-control mt-1"
+                            style={{
+                                height: '45px',
+                                borderRadius: '10px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            <div className='mt-1'>
+                                <i className="fs-4 bi-filter text-dark" ></i>
+                                <span className='ml-3 text-dark'>Filter</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div className='row ml-3'>
@@ -91,6 +109,22 @@ const Main = () => {
                         }
                     })}
 
+                </div>
+
+                <div className="form-control mt-2 showMapButton"
+                    style={{
+                        height: '45px',
+                        width: '8rem',
+                        borderRadius: '50px',
+                        backgroundColor: '#000000',
+                        cursor: 'pointer',
+                        position: 'center'
+                    }}
+                >
+                    <div className='mt-1'>
+                        <span className='text-white'>Show Map</span>
+                        <i className="ml-2 fs-4 bi-map text-white" ></i>
+                    </div>
                 </div>
 
             </div>
