@@ -1,18 +1,24 @@
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../assets/airbnb-logo.png'
 import noImage from '../assets/no-image.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { setSelectedFilter } from '../app/appSlice'
 
 
 const Navbar = () => {
+
+    const dispatch = useDispatch()
     
     return (
         <nav className='sticky-top navbar navbar-expand-sm navbar-dark bg-white elevation'>
             <div className='container-fluid ml-1 mr-1'>
 
-                <Link to={'/'} className="navbar-brand position-relative">
+                <Link
+                    to={'/'} className="navbar-brand position-relative"
+                    onClick={() => dispatch(setSelectedFilter('Shared homes'))}
+                >
                     <img src={logo} alt='connect' width='150px' />
                 </Link>
 

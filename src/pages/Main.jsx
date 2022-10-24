@@ -1,19 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import { filterData, filters } from '../data/dataJson'
 import { useSelector } from 'react-redux'
 import Image from '../assets/11.webp'
+import { setSelectedFilter } from '../app/appSlice'
+import { useDispatch } from 'react-redux'
 
 
 const Main = () => {
 
-    const { windowDimension } = useSelector(state => state.app.value)
+    const { windowDimension, selectedFilter } = useSelector(state => state.app.value)
 
-    const [selectedFilter, setSelectedFilter] = useState('')
+    const dispatch = useDispatch()
 
+    // const [selectedFilter, setSelectedFilter] = useState('')
+    
     console.log(selectedFilter)
+
+    useEffect(() => {
+        dispatch(setSelectedFilter('Shared homes'))   /// Default filter
+    }, [])
 
     return (
         <div>
@@ -37,7 +45,7 @@ const Main = () => {
                                         >
                                             <div
                                                 style={{ cursor: 'pointer' }}
-                                                onClick={() => setSelectedFilter(filter.title)}
+                                                onClick={() => dispatch(setSelectedFilter(filter.title))}
                                             >
                                                 <img src={filter.image} alt={filter.title} style={{ width: '30px' }} />
                                                 <div><small>{filter.title}</small></div>
